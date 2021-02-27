@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'semantic-ui-react';
 import Head from 'next/head';
+import Header from './header';
 
 export default (props) => {
     return (
@@ -12,6 +13,7 @@ export default (props) => {
                 />
                 <style>{'body { background-color: #171717; }'}</style>
             </Head>
+            <Header />
             {props.children}
         </Container>
     );
