@@ -1,9 +1,9 @@
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Icon } from 'semantic-ui-react'
 
 const cardStyle = {
     'background': '#0D0D0D',
-    'borderRadius': '24px',
+    'borderRadius': '12px',
     'padding': '24px',
     'width': '360px'
 }
@@ -26,6 +26,14 @@ const MovieCard = (props) => (
             </Card.Meta>
             <Card.Description style={feedStyle}>
                 {props.description}
+            </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+            <Card.Description style={feedStyle}>
+                <Icon name={props.adult ? 'adn' : 'universal access'} floated='right' />
+                {' '}
+                <Icon name='star' />
+                {props.rating}
             </Card.Description>
         </Card.Content>
     </Card>

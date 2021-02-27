@@ -35,8 +35,10 @@ class ComponentIndex extends Component {
                     key={movie.id}
                     image={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
                     header={movie.title}
-                    meta={movie.release_date}
+                    meta={movie.release_date.slice(0, 4)}
                     description={movie.overview}
+                    rating={movie.vote_average}
+                    adult={movie.adult}
                 />
             )
         })
@@ -50,7 +52,6 @@ class ComponentIndex extends Component {
                     <Header as='h2' textAlign='center'>
                         <Header.Content style={headingStyle}>Hot Movies to Watch</Header.Content>
                     </Header>
-                    {/* <h3 color='#fff'>Hot Movies</h3> */}
                     <Card.Group>
                         {this.renderMovies()}
                     </Card.Group>
