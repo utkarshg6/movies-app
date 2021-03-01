@@ -49,9 +49,9 @@ class ComponentIndex extends Component {
         return (
             <Layout>
                 <div>
-                    <Header as='h2' textAlign='center'>
+                    {/* <Header as='h2' textAlign='center'>
                         <Header.Content style={headingStyle}>Hot Movies to Watch</Header.Content>
-                    </Header>
+                    </Header> */}
                     <Card.Group>
                         {this.renderMovies()}
                     </Card.Group>
