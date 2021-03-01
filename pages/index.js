@@ -33,6 +33,7 @@ class ComponentIndex extends Component {
             return (
                 <MovieCard
                     key={movie.id}
+                    id={movie.id}
                     image={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
                     header={movie.title}
                     meta={movie.release_date.slice(0, 4)}

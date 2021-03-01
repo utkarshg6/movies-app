@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Image, Icon } from 'semantic-ui-react'
+import { Link } from '../routes';
 
 const cardStyle = {
     'background': '#0D0D0D',
@@ -20,7 +21,11 @@ const MovieCard = (props) => (
     <Card style={cardStyle}>
         <Image src={props.image} wrapped ui={false} />
         <Card.Content>
-            <Card.Header style={feedStyle}>{props.header}</Card.Header>
+            <Link route={`/movie/${props.id}`}>
+                <a>
+                    <Card.Header style={feedStyle}>{props.header}</Card.Header>
+                </a>
+            </Link>
             <Card.Meta style={feedStyle}>
                 <span className='date'>{props.meta}</span>
             </Card.Meta>
