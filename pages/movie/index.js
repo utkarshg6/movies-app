@@ -69,7 +69,7 @@ class MoviePage extends Component {
                         </Grid.Column>
                         <Grid.Column>
                             <Header as='h2' style={feedStyle}>{this.state.title}</Header>
-                            <p style={feedStyle}>{this.state.tagline}</p>
+                            {this.state.tagline != `""` && (<p style={feedStyle}>{this.state.tagline}</p>)}
                             <p style={feedStyle}>{this.state.release_date}</p>
                             <p style={feedStyle}>{this.state.overview}</p>
                             <p style={feedStyle}>

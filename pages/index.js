@@ -40,6 +40,7 @@ class ComponentIndex extends Component {
                     description={movie.overview}
                     rating={movie.vote_average}
                     adult={movie.adult}
+                    votes={'Total Votes: ' + movie.vote_count}
                 />
             )
         })

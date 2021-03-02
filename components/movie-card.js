@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image, Icon } from 'semantic-ui-react'
+import { Card, Image, Icon, Popup } from 'semantic-ui-react'
 import { Link } from '../routes';
 
 const cardStyle = {
@@ -13,8 +13,8 @@ const feedStyle = {
     'color': '#fff'
 }
 
-const buttonStyle = {
-    'background': 'linear-gradient(90deg, rgba(69,56,242,1) 0%, rgba(99,61,248,1) 50%, rgba(132,66,254,1) 100%)'
+const popupStyle = {
+    'background': '#000000', 'opacity': '0.85'
 }
 
 const MovieCard = (props) => (
@@ -23,7 +23,7 @@ const MovieCard = (props) => (
         <Card.Content>
             <Link route={`/movie/${props.id}`}>
                 <a>
-                    <Card.Header style={feedStyle}>{props.header}</Card.Header>
+                    <Card.Header as='h3' style={feedStyle}>{props.header}</Card.Header>
                 </a>
             </Link>
             <Card.Meta style={feedStyle}>
@@ -35,9 +35,21 @@ const MovieCard = (props) => (
         </Card.Content>
         <Card.Content extra>
             <Card.Description style={feedStyle}>
-                <Icon name={props.adult ? 'adn' : 'universal access'} floated='right' />
+                <Popup
+                    content={props.adult ? "18+" : "Universal! Watch with family."}
+                    trigger={<Icon name={props.adult ? 'adn' : 'universal access'} />}
+                    position='bottom right'
+                    inverted
+                    style={popupStyle}
+                />
                 {' '}
-                <Icon name='star' />
+                <Popup
+                    content={props.votes}
+                    trigger={<Icon name='star' />}
+                    position='bottom right'
+                    inverted
+                    style={popupStyle}
+                />
                 {props.rating}
             </Card.Description>
         </Card.Content>
