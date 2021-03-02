@@ -3,10 +3,6 @@ import { Menu, Search } from 'semantic-ui-react';
 import { Router, Link } from '../routes';
 import _ from 'lodash';
 
-const searchStyle = {
-    'background': '#0D0D0D'
-}
-
 class MenuBar extends Component {
     state = {
         isLoading: false,
@@ -38,7 +34,7 @@ class MenuBar extends Component {
                                 "id": movie.id,
                                 "title": movie.title,
                                 "image": (movie.poster_path ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path : ''),
-                                "description": movie.release_date.slice(0, 4)
+                                "description": (movie.release_date ? movie.release_date.slice(0, 4) : '')
                             }
                         })
                     }
@@ -78,7 +74,6 @@ class MenuBar extends Component {
                             leading: true,
                         })}
                         onResultSelect={this.handleResultSelect}
-                        style={searchStyle}
                     />
                 </Menu.Menu>
                 <Menu.Menu position='right'>
