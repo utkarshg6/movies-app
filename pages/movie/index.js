@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import Layout from '../../components/layout';
-import { Image, Header, Grid, Icon } from 'semantic-ui-react';
+import { Image, Header, Grid, Icon, Popup } from 'semantic-ui-react';
 
 const feedStyle = {
     'color': '#fff'
+}
+
+const popupStyle = {
+    'background': '#000000', 'opacity': '0.85'
 }
 
 class MoviePage extends Component {
@@ -19,6 +23,7 @@ class MoviePage extends Component {
         tagline: '',
         title: '',
         vote_average: '',
+        vote_count: ''
     }
 
     static async getInitialProps(props) {
@@ -55,6 +60,7 @@ class MoviePage extends Component {
                     tagline: `"${result.tagline}"`,
                     title: result.title,
                     vote_average: result.vote_average,
+                    vote_count: result.vote_count
                 })
             })
     }
@@ -69,15 +75,26 @@ class MoviePage extends Component {
                         </Grid.Column>
                         <Grid.Column>
                             <Header as='h2' style={feedStyle}>{this.state.title}</Header>
-                            <p style={feedStyle}>{this.state.tagline}</p>
+                            {this.state.tagline != `""` && (<p style={feedStyle}>{this.state.tagline}</p>)}
                             <p style={feedStyle}>{this.state.release_date}</p>
                             <p style={feedStyle}>{this.state.overview}</p>
+                            <p style={feedStyle}>{this.state.runtime}</p>
                             <p style={feedStyle}>
-                                {this.state.runtime}
-                                {'  '}
-                                <Icon name={this.state.adult ? 'adn' : 'universal access'} />
+                                <Popup
+                                    content={this.state.adult ? "18+" : "Universal! Watch with family."}
+                                    trigger={<Icon name={this.state.adult ? 'adn' : 'universal access'} />}
+                                    position='bottom left'
+                                    inverted
+                                    style={popupStyle}
+                                />
                                 {' '}
-                                <Icon name='star' />
+                                <Popup
+                                    content={'Total Votes: ' + this.state.vote_count}
+                                    trigger={<Icon name='star' />}
+                                    position='bottom left'
+                                    inverted
+                                    style={popupStyle}
+                                />
                                 {this.state.vote_average}
                             </p>
                         </Grid.Column>
