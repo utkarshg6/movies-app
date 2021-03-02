@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Menu, Search } from 'semantic-ui-react';
-import { Link } from '../routes';
+import { Router, Link } from '../routes';
 import _ from 'lodash';
 
 const searchStyle = {
@@ -22,7 +22,7 @@ class MenuBar extends Component {
             const API_KEY = 'cb4a1628811db83e67e78e9eda59ef8b'
 
             const searchURL =
-                `https://api.themoviedb.org/3/search/movie?query=${encoded_value}&api_key=${API_KEY}&language=en-US&page=1&include_adult=false`
+                `https://api.themoviedb.org/3/search/movie?query=${encoded_value}&api_key=${API_KEY}&language=en-US&page=1&include_adult=true`
 
             fetch(searchURL)
                 .then(res => res.json())
@@ -53,6 +53,12 @@ class MenuBar extends Component {
         this.setState({ isLoading: false, value: value })
     }
 
+    handleResultSelect = (e, { result }) => {
+        console.log("You selected " + result.title)
+        this.setState({ value: result.title })
+        Router.push(`/movie/${result.id}`)
+    }
+
     render() {
         return (
             <Menu inverted style={{ marginTop: "10px" }}>
@@ -71,6 +77,7 @@ class MenuBar extends Component {
                         onSearchChange={_.debounce(this.handleSearchChange, 500, {
                             leading: true,
                         })}
+                        onResultSelect={this.handleResultSelect}
                         style={searchStyle}
                     />
                 </Menu.Menu>
