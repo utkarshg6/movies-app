@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Layout from '../../components/layout';
 import { Image, Header, Grid, Icon, Popup } from 'semantic-ui-react';
+import CreditsCard from '../../components/credits-card';
 
 const feedStyle = {
     'color': '#fff'
@@ -23,7 +24,9 @@ class MoviePage extends Component {
         tagline: '',
         title: '',
         vote_average: '',
-        vote_count: ''
+        vote_count: '',
+
+        cast: []
     }
 
     static async getInitialProps(props) {
@@ -36,15 +39,15 @@ class MoviePage extends Component {
 
     componentDidMount() {
         const movie_id = this.props.movie_id
+        const API_KEY = 'cb4a1628811db83e67e78e9eda59ef8b'
 
         const movieURL =
-            `https://api.themoviedb.org/3/movie/${movie_id}?api_key=cb4a1628811db83e67e78e9eda59ef8b&language=en-US`
+            `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
 
-        const movieImagesURL =
-            `https://api.themoviedb.org/3/movie/${movie_id}/images?api_key=cb4a1628811db83e67e78e9eda59ef8b&language=en-US`
+        const creditsMovieURL =
+            `https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`
 
-        const watchProviders =
-            `https://api.themoviedb.org/3/movie/${movie_id}/watch/providers?api_key=cb4a1628811db83e67e78e9eda59ef8b`
+        // console.log(creditsMovieURL)
 
         fetch(movieURL)
             .then(res => res.json())
@@ -63,6 +66,31 @@ class MoviePage extends Component {
                     vote_count: result.vote_count
                 })
             })
+
+        fetch(creditsMovieURL)
+            .then(res => res.json())
+            .then(result => {
+                this.setState({
+                    cast: result.cast
+                })
+            })
+    }
+
+    renderCastMembers() {
+
+        const topFiveCastMembers = this.state.cast.slice(0, 5)
+
+        return topFiveCastMembers.map((cast_member) => {
+            return (
+                <Grid.Column key={cast_member.id}>
+                    <CreditsCard
+                        image={cast_member.profile_path ? 'https://image.tmdb.org/t/p/w500' + cast_member.profile_path : ''}
+                        name={cast_member.name}
+                        role={cast_member.character}
+                    />
+                </Grid.Column>
+            )
+        })
     }
 
     render() {
@@ -98,6 +126,14 @@ class MoviePage extends Component {
                                 {this.state.vote_average}
                             </p>
                         </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+                <Grid columns={5}>
+                    <Grid.Row>
+                        <Header as='h2' style={feedStyle}>Cast Members</Header>
+                    </Grid.Row>
+                    <Grid.Row>
+                        {this.renderCastMembers()}
                     </Grid.Row>
                 </Grid>
             </Layout>
