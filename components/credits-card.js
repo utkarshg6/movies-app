@@ -15,7 +15,11 @@ const CreditsCard = (props) => {
         <Card style={cardStyle}>
             <Image src={props.image} wrapped ui={false} />
             <Card.Content>
-                <Card.Header style={feedStyle}>{props.name}</Card.Header>
+                <Link route={`/people/${props.id}`}>
+                    <a>
+                        <Card.Header style={feedStyle}>{props.name}</Card.Header>
+                    </a>
+                </Link>
                 <Card.Meta style={feedStyle}>
                     {props.role}
                 </Card.Meta>

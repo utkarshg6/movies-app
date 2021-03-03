@@ -84,6 +84,7 @@ class MoviePage extends Component {
             return (
                 <Grid.Column key={cast_member.id}>
                     <CreditsCard
+                        id={cast_member.id}
                         image={cast_member.profile_path ? 'https://image.tmdb.org/t/p/w500' + cast_member.profile_path : ''}
                         name={cast_member.name}
                         role={cast_member.character}
