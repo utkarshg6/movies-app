@@ -47,8 +47,6 @@ class MoviePage extends Component {
         const creditsMovieURL =
             `https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`
 
-        // console.log(creditsMovieURL)
-
         fetch(movieURL)
             .then(res => res.json())
             .then(result => {

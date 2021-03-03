@@ -50,7 +50,6 @@ class MenuBar extends Component {
     }
 
     handleResultSelect = (e, { result }) => {
-        console.log("You selected " + result.title)
         this.setState({ value: result.title })
         Router.push(`/movie/${result.id}`)
     }

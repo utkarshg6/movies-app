@@ -54,7 +54,6 @@ class PeoplePage extends Component {
                 this.setState({
                     related_movies: result.cast
                 })
-                console.log(this.state.related_movies)
             })
 
     }
