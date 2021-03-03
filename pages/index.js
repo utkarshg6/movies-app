@@ -1,12 +1,11 @@
+/*
+This page will render popular movies and is also the homepage.
+*/
+
 import React, { Component } from 'react';
 import Layout from '../components/layout';
 import MovieCard from '../components/movie-card';
-import { Card, Header, Icon } from 'semantic-ui-react';
-
-const headingStyle = {
-    'color': '#fff',
-    'marginTop': "25px"
-}
+import { Card } from 'semantic-ui-react';
 
 class ComponentIndex extends Component {
 
@@ -50,14 +49,9 @@ class ComponentIndex extends Component {
     render() {
         return (
             <Layout>
-                <div>
-                    {/* <Header as='h2' textAlign='center'>
-                        <Header.Content style={headingStyle}>Hot Movies to Watch</Header.Content>
-                    </Header> */}
-                    <Card.Group>
-                        {this.renderMovies()}
-                    </Card.Group>
-                </div>
+                <Card.Group>
+                    {this.renderMovies()}
+                </Card.Group>
             </Layout>
         )
     }

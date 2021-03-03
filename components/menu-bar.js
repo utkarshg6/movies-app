@@ -1,3 +1,7 @@
+/*
+The Menu Bar which can redirect to homepage and provide search option.
+*/
+
 import React, { Component } from 'react';
 import { Menu, Search } from 'semantic-ui-react';
 import { Router, Link } from '../routes';
@@ -50,7 +54,6 @@ class MenuBar extends Component {
     }
 
     handleResultSelect = (e, { result }) => {
-        console.log("You selected " + result.title)
         this.setState({ value: result.title })
         Router.push(`/movie/${result.id}`)
     }
@@ -77,16 +80,6 @@ class MenuBar extends Component {
                     />
                 </Menu.Menu>
                 <Menu.Menu position='right'>
-                    <Link route='/'>
-                        <a className='item'>
-                            My Movies
-                    </a>
-                    </Link>
-                    <Link route='/'>
-                        <a className='item'>
-                            MetaMask
-                    </a>
-                    </Link>
                 </Menu.Menu>
             </Menu>
         )

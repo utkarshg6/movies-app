@@ -1,3 +1,7 @@
+/*
+This page will render detailed page of selected person.
+*/
+
 import React, { Component } from 'react'
 import Layout from '../../components/layout';
 import { Grid, Header, Image, Card } from 'semantic-ui-react';
@@ -54,7 +58,6 @@ class PeoplePage extends Component {
                 this.setState({
                     related_movies: result.cast
                 })
-                console.log(this.state.related_movies)
             })
 
     }

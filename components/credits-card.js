@@ -1,4 +1,8 @@
-import React, { Component } from 'react';
+/*
+This Component provides a card to represent Artists.
+*/
+
+import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import { Link } from '../routes';
 

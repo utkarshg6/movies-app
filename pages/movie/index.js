@@ -1,3 +1,7 @@
+/*
+This page will render detailed page of selected movie.
+*/
+
 import React, { Component } from 'react'
 import Layout from '../../components/layout';
 import { Image, Header, Grid, Icon, Popup } from 'semantic-ui-react';
@@ -46,8 +50,6 @@ class MoviePage extends Component {
 
         const creditsMovieURL =
             `https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`
-
-        // console.log(creditsMovieURL)
 
         fetch(movieURL)
             .then(res => res.json())
