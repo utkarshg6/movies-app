@@ -1,3 +1,7 @@
+/*
+This page will render popular movies and is also the homepage.
+*/
+
 import React, { Component } from 'react';
 import Layout from '../components/layout';
 import MovieCard from '../components/movie-card';

@@ -1,3 +1,7 @@
+/*
+Constant layout for all the web pages.
+*/
+
 import React from 'react';
 import { Container } from 'semantic-ui-react';
 import Head from 'next/head';

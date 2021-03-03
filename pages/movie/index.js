@@ -1,3 +1,7 @@
+/*
+This page will render detailed page of selected movie.
+*/
+
 import React, { Component } from 'react'
 import Layout from '../../components/layout';
 import { Image, Header, Grid, Icon, Popup } from 'semantic-ui-react';

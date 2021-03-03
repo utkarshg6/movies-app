@@ -1,3 +1,7 @@
+/*
+This Component provides a card to provide Movie Details.
+*/
+
 import React from 'react'
 import { Card, Image, Icon, Popup } from 'semantic-ui-react'
 import { Link } from '../routes';

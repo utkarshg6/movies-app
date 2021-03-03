@@ -1,3 +1,7 @@
+/*
+The Menu Bar which can redirect to homepage and provide search option.
+*/
+
 import React, { Component } from 'react';
 import { Menu, Search } from 'semantic-ui-react';
 import { Router, Link } from '../routes';
