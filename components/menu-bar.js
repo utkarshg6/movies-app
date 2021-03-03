@@ -77,16 +77,6 @@ class MenuBar extends Component {
                     />
                 </Menu.Menu>
                 <Menu.Menu position='right'>
-                    <Link route='/'>
-                        <a className='item'>
-                            My Movies
-                    </a>
-                    </Link>
-                    <Link route='/'>
-                        <a className='item'>
-                            MetaMask
-                    </a>
-                    </Link>
                 </Menu.Menu>
             </Menu>
         )
